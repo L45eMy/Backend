@@ -112,6 +112,7 @@
 						  <div class="btn-group" style="margin-left:25px;">
 						  	<button class="btn installAll"><i class="icon-share"></i></button>
 						  	<button class="btn executeAll"><i class="icon-play"></i></button>
+							<button class="btn dioscopeAll"><i class="icon-adjust"></i></button>
 						  </div>
 					  </h3>
 					</div>
@@ -266,6 +267,7 @@
 				//setup tooltips for result-actions
 				$('.installAll').tooltip({'placement':'bottom', 'title':'install all apps on device'});
 				$('.executeAll').tooltip({'placement':'bottom', 'title':'execute all apps on device'});
+				$('.dioscopeAll').tooltip({'placement':'bottom', 'title':'Dioscope analyze all apps on device'});
 
 				// setup popovers for device selection
 				$('.installAll').popover({
@@ -293,6 +295,19 @@
 						return html;
 					}
 				});
+				$('.dioscopeAll').popover({
+					'title': 'Dioscope analyze all Apps',
+					'html': true,
+					'content': function() {
+						var popover = $('#popoverTemplate').clone();
+						popover.find('.btn-primary').attr('onclick', 'dioscopeAllAppsOnDeviceFormSubmit($(this).parent())');
+						popover.find('.executionStrategyInput').css('display', 'block');
+						html = '<div>';
+						html += popover.html();
+						html += '</div>';						
+						return html;
+					}
+				});
 			});
 			
 			function renderAppActions( data, type, full ) {
@@ -301,6 +316,7 @@
 					<div class="btn-group  btn-group-vertical"> \
 						<a class="btn installApp" data-bundleid="' + bundleid + '"><i class="icon-share"></i></a> \
 						<a class="btn executeApp" data-bundleid="' + bundleid + '"><i class="icon-play"></i></a> \
+						<a class="btn dioscopeApp" data-bundleid="' + bundleid + '"><i class="icon-adjust"></i></a> \
 					</div> \
 				</div>'
 			}
@@ -320,6 +336,7 @@
 				//setup tooltips for actions
 				$('.installApp').tooltip({'placement':'right', 'title':'install app on device'});
 				$('.executeApp').tooltip({'placement':'right', 'title':'execute app on device'});
+				$('.dioscopeApp').tooltip({'placement':'right', 'title':'Dioscope analyze app on device'});
 
 				//add popover to schedule a app installation
 				$('.installApp').popover({
@@ -342,6 +359,20 @@
 						var popover = $('#popoverTemplate').clone();
 						popover.find('.bundleId').val($(this).data('bundleid'));
 						popover.find('.btn-primary').attr('onclick', 'executeAppOnDeviceFormSubmit($(this).parent())');
+						popover.find('.executionStrategyInput').css('display', 'block');
+						html = '<div>';
+						html += popover.html();
+						html += '</div>';						
+						return html;
+					}
+				});
+				$('.dioscopeApp').popover({
+					'title': 'Dioscope analyze App',
+					'html': true,
+					'content': function() {
+						var popover = $('#popoverTemplate').clone();
+						popover.find('.bundleId').val($(this).data('bundleid'));
+						popover.find('.btn-primary').attr('onclick', 'dioscopeAppOnDeviceFormSubmit($(this).parent())');
 						popover.find('.executionStrategyInput').css('display', 'block');
 						html = '<div>';
 						html += popover.html();

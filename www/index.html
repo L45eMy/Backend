@@ -420,6 +420,7 @@
 					<div class="btn-group  btn-group-vertical"> \
 						<a class="btn installApp" data-bundleid="' + full.bundleId + '"><i class="icon-share"></i></a> \
 						<a class="btn executeApp" data-bundleid="' + full.bundleId + '"><i class="icon-play"></i></a> \
+						<a class="btn dioscopeApp" data-bundleid="' + full.bundleId + '"><i class="icon-adjust"></i></a> \
 						<a class="btn downloadApp" href="apps/' + full['_id'] + '/ipa"><i class="icon-download"></i></a> \
 					</div> \
 				</div>'
@@ -567,6 +568,7 @@
 				$('.downloadApp').tooltip({'placement':'right', 'title':'download app ipa'});
 				$('.installApp').tooltip({'placement':'right', 'title':'install app on device'});
 				$('.executeApp').tooltip({'placement':'right', 'title':'execute app on device'});
+				$('.dioscopeApp').tooltip({'placement':'right', 'title':'Dioscope analyze app on device'});
 				
 				$('.jobInfo').popover({
 					'title': 'jobInfo',
@@ -601,6 +603,20 @@
 						var popover = $('#popoverTemplate').clone();
 						popover.find('.bundleId').val($(this).data('bundleid'));
 						popover.find('.btn-primary').attr('onclick', 'executeAppOnDeviceFormSubmit($(this).parent())');
+						popover.find('.executionStrategyInput').css('display', 'block');
+						html = '<div>';
+						html += popover.html();
+						html += '</div>';						
+						return html;
+					}
+				});
+				$('.dioscopeApp').popover({
+					'title': 'Dioscope analyze App',
+					'html': true,
+					'content': function() {
+						var popover = $('#popoverTemplate').clone();
+						popover.find('.bundleId').val($(this).data('bundleid'));
+						popover.find('.btn-primary').attr('onclick', 'dioscopeAppOnDeviceFormSubmit($(this).parent())');
 						popover.find('.executionStrategyInput').css('display', 'block');
 						html = '<div>';
 						html += popover.html();

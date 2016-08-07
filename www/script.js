@@ -267,7 +267,45 @@ function executeAllAppsOnDeviceFormSubmit(form) {
 	$(".executeAll").popover("hide");
 }
 
+function dioscopeAppOnDevice(options) { 
+	scheduleAppJob('dioscope', options);
+}
 
+function dioscopeAllOnDevice(options) {
+	bundleIdPath = currBundleIdPath();
+	for (i=0; i<results.length; i++) {
+		bundleId = valueFromObject(results[i], bundleIdPath);
+		options.bundleId = bundleId;
+		dioscopeAppOnDevice(options);
+	}
+}
+
+function dioscopeAppOnDeviceFormSubmit(form) {
+	bundleId = form.find(".bundleId").val();
+	device = form.find(".deviceSelect").val();
+	executionStrategy = form.find(".executionStrategySelect").val();
+	account = form.find(".accountSelect").val();
+	
+	dioscopeAppOnDevice({
+		'bundleId': bundleId,
+		'device': device,
+		'executionStrategy': executionStrategy,
+		'accountId': account
+	});
+	$(".dioscopeApp").popover("hide");
+}
+
+function dioscopeAllAppsOnDeviceFormSubmit(form) {
+	device = form.find(".deviceSelect").val();
+	executionStrategy = form.find(".executionStrategySelect").val();
+	account = form.find(".accountSelect").val();
+	dioscopeAllOnDevice({
+		'device': device,
+		'executionStrategy': executionStrategy,
+		'accountId': account
+	});
+	$(".dioscopeAll").popover("hide");
+}
 
 //////////////////////////////////////////////////
 //

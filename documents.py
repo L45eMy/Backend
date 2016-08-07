@@ -149,7 +149,7 @@ class Device(BackendDocument):
 # A job will be executed by a worker
 class Job(BackendDocument):
 	STATE = Enum(u'undefined', u'pending', u'running', u'finished', u'failed')
-	TYPE = Enum(u'run_app', u'install_app')
+	TYPE = Enum(u'run_app', u'install_app', u'dioscope')
 
 	use_autorefs = True
 	__collection__ = 'jobs'
