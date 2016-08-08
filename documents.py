@@ -350,6 +350,10 @@ class Result(BackendDocument):
 			'type': basestring,
 			'data': None
 		},
+		'dioscope': {
+			'date_published': float,
+			'es_analysis_id': basestring
+		},
 		'date_added': float
 	}
 	gridfs = {
