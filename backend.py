@@ -441,7 +441,7 @@ def post_results():
 	# check for app_archive and save it to gridfs instead
 	if 'type' in result.resultInfo:
 		resultType = result.resultInfo['type']
-		if resultType == Result.TYPE.APP_ARCHIVE or resultType == Result.TYPE.TCPDUMP:
+		if resultType == Result.TYPE.APP_ARCHIVE or resultType == Result.TYPE.TCPDUMP or resultType == Result.TYPE.DIOSCOPE_STATIC:
 	
 			data = result.resultInfo['data']
 			result.resultInfo['data'] = resultType.upper()
