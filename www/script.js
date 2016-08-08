@@ -76,7 +76,7 @@ function postJSON(url, data) {
 
 function submitJob(job) {
 	postJSON('jobs', job);
-	notifySuccess('Submitted job to backend. <a href="/#jobs" onclick="show(\'jobs\')">Show/reload jobs.</a>')
+	notifySuccess('Submitted job to backend. <a class="btn btn-default" href="/#jobs" onclick="show(\'jobs\')">Show/Reload Jobs</a>')
 }
 
 function rescheduleJob(jobId) {
