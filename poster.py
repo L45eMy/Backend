@@ -22,7 +22,7 @@ class Poster:
         query = {
             '$and': [
                 { 'resultInfo.type': 'dioscope_static' },
-                { 'dioscope.date_published': { '$exists': False } }
+                { 'dioscope.date_published': None }
             ]
         }
 
