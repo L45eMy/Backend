@@ -36,7 +36,7 @@ class Poster:
             files = self._get_file_results(runId)
             files = list(files.resultInfo.data)
 
-            self._publish_result(result, a, requests, files, mark=False)
+            self._publish_result(result, a, requests, files)
 
     def _get_results(self):
         query = {
