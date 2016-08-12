@@ -341,7 +341,7 @@ class Run(BackendDocument):
 
 # A result needs a corresponding run, multiple results per run are possible
 class Result(BackendDocument):
-	TYPE = Enum(u'app_archive', u'string', u'criteria', u'stacktrace', u'tcpdump', u'screenshot', u'coverage', u'tracking_libs', u'http_requests', u'dioscope_static')
+	TYPE = Enum(u'app_archive', u'string', u'criteria', u'stacktrace', u'tcpdump', u'screenshot', u'coverage', u'tracking_libs', u'http_requests', u'dioscope_static', u'dioscope_runtime', u'filelist', u'network_request')
 
 	__collection__ = 'results'
 	structure = {
