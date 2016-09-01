@@ -304,7 +304,11 @@ class Run(BackendDocument):
 		'app': App,
 		'state': IS(*STATE.values_both_types()),
 		'executionStrategy': basestring,
-		'date_added': float
+		'date_added': float,
+		'dioscope': {
+			'date_published': float,
+			'es_analysis_id': basestring
+		}
 	}
 	required_fields = ['app']
 	default_values = {
@@ -349,10 +353,6 @@ class Result(BackendDocument):
 		'resultInfo': {
 			'type': basestring,
 			'data': None
-		},
-		'dioscope': {
-			'date_published': float,
-			'es_analysis_id': basestring
 		},
 		'date_added': float
 	}
